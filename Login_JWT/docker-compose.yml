@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web-server:
+    build:
+      context: ./server
+    ports:
+      - "3000:80"                   # Map host port 80 to container port 80
+
+  web-client:
+    build:
+      context: ./client
+    ports:
+      - "8080:80"                 # Map host port 8080 to container port 80
+    depends_on:
+      - web-server                # Ensure web-server is running before starting web-client
