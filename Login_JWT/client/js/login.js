@@ -1,6 +1,7 @@
 const cookieDelim = ','
 
-BaseUrl = "http://localhost:3000"
+//BaseUrl = "http://localhost:3000"
+BaseUrl = "http://172.24.0.2:3000"
 
 function setCookie(name, value, options = {}) {
     let cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;

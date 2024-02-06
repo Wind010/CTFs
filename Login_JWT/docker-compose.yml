@@ -1,15 +1,30 @@
-version: '3'
+version: '3.8'
+
+networks:
+  frontend:
+    ipam:
+      config:
+        - subnet: 172.24.0.0/24
+
 services:
-  web-server:
+  server:
     build:
       context: ./server
+    networks:
+        frontend:
+            ipv4_address: 172.24.0.2
     ports:
-      - "3000:80"                   # Map host port 80 to container port 80
+      - "3000:3000"               # host_port:container_port
+    env_file:
+      - ./server/env.list
 
-  web-client:
+  client:
     build:
       context: ./client
+    networks:
+        frontend:
+            ipv4_address: 172.24.0.3
     ports:
-      - "8080:80"                 # Map host port 8080 to container port 80
+      - "3001:80"
     depends_on:
-      - web-server                # Ensure web-server is running before starting web-client
+      - server

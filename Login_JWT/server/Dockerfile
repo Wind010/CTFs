@@ -6,8 +6,14 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
+# Firewall workaround
+RUN npm config set strict-ssl false
+
 # Install the application dependencies
 RUN npm install
+
+# Firewall workaround
+RUN npm config set strict-ssl true
 
 # Copy the rest of the application code
 COPY . .
