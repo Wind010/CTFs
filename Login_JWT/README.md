@@ -32,7 +32,7 @@ docker compose up
 
 If you want to rebuild the images after some changes:
 ```sh
-docker compose up build
+docker compose up --build
 ```
 
 #### Tear down

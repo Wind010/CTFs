@@ -20,9 +20,11 @@ app.use(morgan('dev'))  // tiny
 
  
 // Routes
+const pingRoutes = require('./src/routes/pingRoutes');
 const authRoutes = require('./src/routes/authRoutes');
 
 // Use some logging framework for structured logging like winston or pino.
+app.use('/api', pingRoutes);
 app.use('/api/auth', authRoutes);
 
 // Apply error handling last
