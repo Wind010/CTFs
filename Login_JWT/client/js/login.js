@@ -1,7 +1,8 @@
 const cookieDelim = ','
 
 //BaseUrl = "http://localhost:3000"
-BaseUrl = "http://172.20.0.2:3000"
+//BaseUrl = "http://172.20.0.2:3000"
+BaseUrl = "https://ctf02042023.azurewebsites.net"
 
 function setCookie(name, value, options = {}) {
     let cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
@@ -46,7 +47,7 @@ async function login() {
         const response = await fetch(`${BaseUrl}/api/auth/login`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ username, password }),
         });

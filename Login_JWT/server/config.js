@@ -13,10 +13,11 @@ const config = {
     nodeEnv: process.env['NODE_ENV'] ?? 'development',
     port: process.env.PORT ?? 3000,
 
+    // Productions origin should be updated accordingly in actual production code.
     clientOrigins: {
         'test': process.env.DEV_ORIGIN ?? '*',
         'development': process.env['DEV_ORIGIN'] ?? '*',
-        'production': process.env.PROD_ORIGIN ?? 'none'
+        'production': process.env.PROD_ORIGIN ?? '*' // 'none'  
     },
 
     sessionIdLength: parseInt(process.env.SESSION_ID_LENGTH) ?? 8,
