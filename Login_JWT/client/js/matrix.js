@@ -18,8 +18,8 @@ function getRandom(min, max) {
 // configrations 
 var fontSize = 20,
 	color = '#00FF98',
-	background = 'rgba(62, 62, 86, 0.2)',
-	speed = 100;
+	background = 'rgba(34, 34, 41, 0.2)',
+	speed = 50;
 	charSet = "CTF JWT PURPOSE";
 	charSet = charSet.split('');
 
@@ -31,7 +31,7 @@ var matrixWidth = matrixWidth,
 	charNumber = charSet.length - 1;
 
 // set font size
-ctx.font  = fontSize + "px Arial";
+ctx.font  = fontSize + "px Courier New";
 
 
 draw = function() {
