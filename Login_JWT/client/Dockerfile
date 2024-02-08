@@ -4,7 +4,9 @@ FROM nginx:alpine
 # Copy the HTML and JavaScript files to the Nginx web server directory
 COPY login.html /usr/share/nginx/html/
 COPY css/styles.css /usr/share/nginx/html/css/
+COPY css/matrix.css /usr/share/nginx/html/css/
 COPY js/login.js /usr/share/nginx/html/js/
+COPY js/matrix.js /usr/share/nginx/html/js/
 
 # Copy Nginx default configuration with adjusted index
 COPY nginx-default.conf /etc/nginx/conf.d/default.conf
