@@ -9,6 +9,22 @@ const authHandler = require('../middleware/authHandler')
  */
 exports.login = async (req, res) => {
   const { username, password } = req.body;
+  const restrictedUsernames = ['admin'];
+
+  if (!username) {
+    res.status(400).json({ message: 'Invalid username' });
+    return;
+  }
+
+  if (restrictedUsernames.includes(username.toLowerCase())) {
+    res.status(400).json({ message: 'Admin is special!' });
+    return;
+  }
+
+  if (!password) {
+    res.status(400).json({ message: 'Invalid password' });
+    return;
+  }
 
   if (username && password) {
     // If authentication is successful, create a JWT

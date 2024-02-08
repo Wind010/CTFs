@@ -99,7 +99,19 @@ from itertools import product
 input_string = "Some string you want to basic l333t!"
 
 def leet_replace(char):
-    leet_dict = {'a': ['a', '4'], 'e': ['e', '3'], 'i': ['i', '1'], 'o': ['o', '0'], 's': ['s', '5']}
+    leet_dict = {
+        'a': ['a', '4'],
+        'b': ['b', '8'],
+        'c': ['c', '<', '('],
+        'e': ['e', '3'],
+        'g': ['g', '9'],
+        'i': ['i', '1', '!'],
+        'l': ['l', '|', '1'],
+        'o': ['o', '0'],
+        's': ['s', '$', '5'],
+        't': ['t', '7', '+'],
+        'z': ['z', '2']
+    }
     return leet_dict.get(char, [char])
 
 # Generate leet variations of the characters

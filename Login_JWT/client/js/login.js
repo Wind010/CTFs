@@ -1,8 +1,8 @@
 const cookieDelim = ','
 
-//BaseUrl = "http://localhost:3000"
+BaseUrl = "http://localhost:3000"
 //BaseUrl = "http://172.20.0.2:3000"
-BaseUrl = "https://ctf02042023.azurewebsites.net"
+//BaseUrl = "https://ctf02042023.azurewebsites.net"
 
 function setCookie(name, value, options = {}) {
     let cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
@@ -38,12 +38,23 @@ function getCookie(name) {
     return '';
 }
 
+function validateUsername() {
+    var username = document.getElementById('username').value;
+    var restrictedUsernames = ['admin', 'root', 'superuser', 'your_mom'];
+    return !restrictedUsernames.includes(username.toLowerCase());
+}
+
 
 async function login() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     try {
+        if (! validateUsername()) {
+            alert('Invalid username. Please choose a different username.');
+            return;
+        }
+
         const response = await fetch(`${BaseUrl}/api/auth/login`, {
             method: 'POST',
             headers: {
@@ -51,8 +62,13 @@ async function login() {
             },
             body: JSON.stringify({ username, password }),
         });
-
+        
+        
         if (!response.ok) {
+            if (response.status == 400) {
+                const res = await response.json();
+                alert(res.message)
+            }
             throw new Error('Login failed');
         }
 
@@ -65,9 +81,8 @@ async function login() {
         //setCookie('jwt', jwt, { expires: expiryDate, path: '/' });
 
         setCookie('jwt', jwt)
-
         console.log('Login successful! JWT token has been stored as a cookie.');
-
+        alert('Login successful!');
         updatePageContent();
     } catch (error) {
         console.error('Login failed:', error);
