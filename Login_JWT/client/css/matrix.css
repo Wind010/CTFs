@@ -1,0 +1,55 @@
+body {
+    background-color: rgb(19, 19, 176);
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  #matrix {
+    background-color: rgb(152, 152, 203);
+    animation: blur 10s infinite;
+    animation-delay: 10s;
+  }
+  
+  @keyframes blur {
+    0% {
+      filter: url(#blur-horizontal);
+    }
+    2% {
+      filter: url(#none);
+    }
+    5% {
+      filter: url(#blur-horizontal);
+    }
+    7% {
+      filter: url(#none);
+    }
+    10% {
+      filter: url(#blur-horizontal);
+    }
+    12% {
+      filter: url(#none);
+    }
+    58% {
+      filter: url(#none);
+    }
+    60% {
+      filter: url(#blur-vertical);
+    }
+    62% {
+      filter: url(#none);
+    }
+    65% {
+      filter: url(#blur-horizontal);
+    }
+    67% {
+      filter: url(#none);
+    }
+    69% {
+      filter: url(#blur-vertical);
+    }
+    72% {
+      filter: url(#none);
+    }
+  }
