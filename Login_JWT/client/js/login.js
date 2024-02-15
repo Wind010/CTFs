@@ -1,9 +1,9 @@
 const cookieDelim = ','
 
 // Update based off the server you are testing against.
-BaseUrl = "http://localhost:3000"
+//BaseUrl = "http://localhost:3000"
 //BaseUrl = "http://172.20.0.2:3000"
-//BaseUrl = "https://ctf02042023.azurewebsites.net"
+BaseUrl = "https://ctf02042023.azurewebsites.net"
 
 function setCookie(name, value, options = {}) {
     let cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
