@@ -21,9 +21,20 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+
+form {
+  text-align: center;
+  color: #81bc8e;
+}
+
+h1 {
+  text-align: center;
+  color: #55b16a;
+}
+
 h2 {
   text-align: center;
-  color: #61dafb;
+  color: #12cb3d;
 }
 
 form {
@@ -46,11 +57,11 @@ input {
 }
 
 input:focus {
-  border-color: #90caf9;
+  border-color: #26561d;
 }
 
 button {
-  background-color: #61dafb;
+  background-color: #10a64a;
   color: #282c37;
   padding: 10px;
   border: none;
@@ -60,9 +71,8 @@ button {
 }
 
 button:hover {
-  background-color: #30a3d4;
+  background-color: #48e367;
 }
-
 
 
 body {
