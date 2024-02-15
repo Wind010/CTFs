@@ -60,7 +60,7 @@ button {
 }
 
 button:hover {
-  background-color: #90caf9;
+  background-color: #30a3d4;
 }
 
 
@@ -71,9 +71,30 @@ body {
 }
 
 #background {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#content {
+    /* Additional styling for the content div */
+    padding: 20px;
+    color: #14ec95;
+    box-sizing: border-box;
+    z-index: 2; /* Ensure the content is above the background */
+
+    /* Center the content */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    text-align: center; /* Center text content horizontally */
+}
+
+#content h2 {
+  color: #14ec95;
 }
 
 #login {

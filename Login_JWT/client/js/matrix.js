@@ -1,74 +1,81 @@
-// Author:  https://codepen.io/ismail9k/pen/eZoGyz
+// Adapted from Author:  https://codepen.io/ismail9k/pen/eZoGyz
 
-// select the canvas
+
+// Select the canvas
 var matrix = document.getElementById("matrix");
-
-// make canvas fill the screen
-var matrixWidth = matrix.width = window.innerWidth;
-var matrixHeight =  matrix.height = window.innerHeight;
 
 // Get canvas context
 var ctx = matrix.getContext('2d');
 
-// Returns a random integer between min (included) and max (included)
-function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-// configrations 
+// Configurations
 var fontSize = 20,
-	color = '#00FF98',
-	background = 'rgba(34, 34, 41, 0.2)',
-	speed = 50;
+    color = '#00FF98',
+    background = 'rgba(34, 34, 41, 0.2)',
+    speed = 50;
 	charSet = "CTF JWT PURPOSE";
 	charSet = charSet.split('');
 
-// calculations 
-var matrixWidth = matrixWidth,
-	matrixHeight = matrixHeight,
-	columns = matrixWidth/fontSize,
-	rows = matrixHeight/fontSize,
-	charNumber = charSet.length - 1;
+// Calculations
+var columns, rows, drops;
 
-// set font size
-ctx.font  = fontSize + "px Courier New";
+// Initialize the matrix
+function initMatrix() {
+    // Make canvas fill the screen
+    matrix.width = window.innerWidth;
+    matrix.height = window.innerHeight;
 
+    columns = Math.floor(matrix.width / fontSize);
+    rows = Math.floor(matrix.height / fontSize);
 
-draw = function() {
-	setInterval(rain(), speed);
-};
+    // One drop per column, row set randomly
+    drops = [];
+    for (var column = 0; column < columns; column++) {
+        drops[column] = getRandom(0, rows);
+    }
 
-// the working code
-// One drop per column, row set randomly
-var drops = [];
-for (var column = 0; column < columns; column++) {
-  drops[column] = getRandom(0, rows);
+    // Set font size
+    ctx.font = fontSize + "px Courier New";
 }
 
-function rain() {
-
-	// clear the screen with opacity of 0.05
-	ctx.fillStyle = background;
- 	ctx.fillRect(0, 0, matrixWidth, matrixHeight);
-
-	// For each column / drop
-	for (var column = 0; column < drops.length; column++) {
-		ctx.fillStyle = color;
-		// pick rundwon char
-		var char = charSet[getRandom(0, charSet.length - 1)];
-		// Draw the char
-		ctx.fillText(char, column * fontSize, drops[column] * fontSize);
-		// Randomly reset drop back to top row
-		if (Math.random() > 0.98) {
-			drops[column] = 0;
-		}
-
-		drops[column]++; // Move drop down a row
-
-	}
-};
-
-function run() {
-	setInterval(rain, speed);
+// Returns a random integer between min (included) and max (included)
+function getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-run();
+
+// Draw function
+function draw() {
+    // Clear the screen with opacity of 0.05
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, matrix.width, matrix.height);
+
+    // For each column / drop
+    for (var column = 0; column < drops.length; column++) {
+        ctx.fillStyle = color;
+        // Pick a random character
+        var char = charSet[getRandom(0, charSet.length - 1)];
+        // Draw the character
+        ctx.fillText(char, column * fontSize, drops[column] * fontSize);
+        // Randomly reset drop back to top row
+        if (Math.random() > 0.98) {
+            drops[column] = 0;
+        }
+
+        drops[column]++; // Move drop down a row
+    }
+}
+
+// Resize matrix when the window is resized
+function resizeMatrix() {
+    initMatrix();
+    draw();
+}
+
+// Initialize the matrix and draw
+initMatrix();
+draw();
+
+// Run draw function at regular intervals
+setInterval(draw, speed);
+
+// Add event listener for window resize
+window.addEventListener('resize', resizeMatrix);
