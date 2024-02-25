@@ -6,8 +6,8 @@ ENV CTF=$CTF
 
 # Install SSH server and any other dependencies.
 # If behind corporate firewall, may need --no-check-certificate
-RUN apk update && apk upgrade \
-    && apk add openssh cmatrix \
+RUN apk update --no-check-certificate && apk upgrade --no-check-certificate \
+    && apk add openssh cmatrix --no-check-certificate \
     && rm -rf /var/cache/apk/*
 
 # Configure SSH server for password authentication and set MaxAuthTries
