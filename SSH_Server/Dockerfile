@@ -6,8 +6,8 @@ ENV CTF=$CTF
 
 # Install SSH server and any other dependencies.
 # If behind corporate firewall, may need --no-check-certificate
-RUN apk update --no-check-certificate && apk upgrade --no-check-certificate \
-    && apk add openssh cmatrix --no-check-certificate \
+RUN apk update  && apk upgrade  \
+    && apk add openssh cmatrix \
     && rm -rf /var/cache/apk/*
 
 # Configure SSH server for password authentication and set MaxAuthTries
@@ -34,7 +34,8 @@ RUN chmod +x /usr/local/bin/$CTF
 EXPOSE 22
 
 # Run a script to set the user password during container startup
-COPY initialize.sh /usr/local/bin/
+COPY initialize.sh /usr/local/bin/initialize.sh
 RUN chmod +x /usr/local/bin/initialize.sh
 ENTRYPOINT ["/usr/local/bin/initialize.sh"]
 
+ 
