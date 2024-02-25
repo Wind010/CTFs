@@ -23,3 +23,6 @@ bundles/
 vendor/pkg/
 pyenv
 Vagrantfile
+
+# Ignore changes to this for now.
+ctf_actual.sh
