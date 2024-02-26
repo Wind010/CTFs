@@ -2,24 +2,24 @@
 
 
 # Set the username and password
-USERNAME=${USERNAME:-ctf_user}
+CTF_USERNAME=${CTF_USERNAME:-ctf_user}
 PASSWORD=${PASSWORD:-some_password}
 CTF=${CTF:-ctf.sh}
 
 # Create the user if it doesn't exist for ssh login
-if ! getent passwd $USERNAME > /dev/null 2>&1; then
-    adduser -D -s /bin/ash $USERNAME
+if ! getent passwd $CTF_USERNAME > /dev/null 2>&1; then
+    adduser -D -s /bin/ash $CTF_USERNAME
 fi
 
 # Set the password for the specified user
-echo "$USERNAME:$PASSWORD" | chpasswd
+echo "$CTF_USERNAME:$PASSWORD" | chpasswd
 
-cp "/usr/local/bin/$CTF" "/home/$USERNAME/$CTF"
-chmod +x "/home/$USERNAME/$CTF"
+cp "/usr/local/bin/$CTF" "/home/$CTF_USERNAME/$CTF"
+chmod +x "/home/$CTF_USERNAME/$CTF"
 
 # Modify .profile to automatically run the script/exe upon login
-echo "/home/$USERNAME/$CTF" >> /home/$USERNAME/.profile 
-echo "exec /bin/ash" >> /home/$USERNAME/.profile
+echo "/home/$CTF_USERNAME/$CTF" >> /home/$CTF_USERNAME/.profile 
+echo "exec /bin/ash" >> /home/$CTF_USERNAME/.profile
 
 
 echo "Starting SSH server..."
