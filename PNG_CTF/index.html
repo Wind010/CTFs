@@ -1,0 +1,44 @@
+<!-- 
+Inspired by John Johnson's CTF
+Engineered the reverse engineered the javascript code.
+-->
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"
+        integrity="sha512-MzluaiqTHieej9sKOtlT5D5uog5n278iCAX/sr8Ms271OkiKptg1RZgRXRjhQ+v4yO3LcffdeeQfiUfMpduqeA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+
+    <script src="js/flag.js"></script>
+    <!--<script src="js/flag_small.js"></script>-->
+    <script src="js/particles.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/ctf.js"></script>
+
+<body>
+
+    <center>
+        <div id="box">
+            <form id="ctf_form" action="#i_pass_butter"
+                onsubmit="assemble_png(document.getElementById('user_in').value)">
+                <input id="user_in" type="text">
+                <!-- <input id="user_in" type="number" maxlength="16"> -->
+                <button id='submit-button' type='submit' title="Submit the Key"><span>🗝️</span></button>
+
+            </form>
+        </div>
+
+        <div class="container">
+            <img id="image" src="" />
+        </div>
+    </center>
+
+</body>
+
+</html>

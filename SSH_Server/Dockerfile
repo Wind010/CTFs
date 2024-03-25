@@ -6,8 +6,9 @@ ENV CTF=$CTF
 
 # Install SSH server and any other dependencies.
 # If behind corporate firewall, may need --no-check-certificate
-RUN apk update && apk upgrade  \
-    && apk add openssh cmatrix \
+RUN apk update --no-check-certificate && apk upgrade --no-check-certificate \
+    && apk add openssh --no-check-certificate \
+    && apk add cmatrix --no-check-certificate \
     && rm -rf /var/cache/apk/*
 
 
@@ -20,7 +21,7 @@ RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/
 
 
 # Generate ssh host key.
-RUN ssh-keygen -A
+RUN ssh-keygen -A 
 
 # Add your script or exe to the container
 ADD $CTF /usr/local/bin/$CTF

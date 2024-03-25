@@ -16,23 +16,11 @@ CYAN='\033[0;36m'
 timeout 3s cmatrix
 
 
-# Substring to check for
-substring=""
-
 while true; do
-    # Prompt user for input
-    echo -e -n "${GREEN}Query?: ${NC}"
+    echo -e "${GREEN}Congratulations!  A little further... ${NC}"
+    echo -e "${CYAN}NB2HI4DTHIXS6Z3JON2C4Z3JORUHKYTVONSXEY3PNZ2GK3TUFZRW63JPK5UW4ZBQGEYC6MZWGI2WKNRYHE2GKNBSGQ2TEZBZGI2TKNBZGFSTSOBUGFSGCZBSF5ZGC5ZPGQYTKZRQME4DENRVHA4TMNZUG5SWCZLBGEYTMMBXMRRGCOBXGJRWMYLBGY2TEODGF5QXGY3JNFPWY33SMRPW643DMFZC45DYOQ======${NC}\n\n"
+
     read -r user_input
-    #read -r -p "Query: " user_input
 
-    # Check if the entered string contains the substring
-    if [[ "$user_input" == *"$substring"* ]]; then
-        echo "OMG..."
-        echo -e "${CYAN}Nice!${NC}\n\n"
-
-        # Don't use exit/break since this will kill the script and leave user in ssh terminal.
-        pkill -u $(whoami) sshd
-    else
-        echo -e "${RED}Boo!${NC}\n"
-    fi
+    pkill -u $(whoami) sshd
 done
